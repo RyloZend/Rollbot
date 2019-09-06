@@ -65,6 +65,14 @@ let emoji4 = message.guild.emojis.find('name', "smugnagisa");
     .then(message.react(emoji4));
   }
 
+  if(message.content.startsWith === "Jo Freunde") {
+
+    message.channel.send("Doppel Peace hier ist wieder euer Tanzverbot");
+
+    return true;
+  };
+
+
   if(cmd === `${prefix}love`){
     return message.channel.send("$mu")
   }
