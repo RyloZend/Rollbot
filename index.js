@@ -73,6 +73,14 @@ let emoji4 = message.guild.emojis.find('name', "smugnagisa");
   };
 
 
+  if(message.content.startsWith === "Hallo") {
+
+    message.reply("Hallöchen");
+
+    return true;
+  };
+
+
   if(cmd === `${prefix}love`){
     return message.channel.send("$mu")
   }
