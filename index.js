@@ -65,7 +65,7 @@ let emoji4 = message.guild.emojis.find('name', "smugnagisa");
     .then(message.react(emoji4));
   }
 
-  if(message.content.startsWith === "Jo") {
+  if(message.content.startsWith("Jo")) {
 
     message.channel.send("Freunde Doppel Peace hier ist wieder euer Tanzverbot");
 
