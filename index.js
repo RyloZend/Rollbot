@@ -73,7 +73,7 @@ let emoji4 = message.guild.emojis.find('name', "smugnagisa");
   };
 
 
-  if(message.content.startsWith === "Hallo") {
+  if(message.content.startsWith("Hallo")) {
 
     message.reply("Hallöchen");
 
