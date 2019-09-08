@@ -4,7 +4,11 @@ const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 process.setMaxListeners(0);
 bot.commands = new Discord.Collection();
-
+//Hier bitte alle Waifus mit Namen reinschreiben!
+//Bitte genau wie der Bot diesen Oben in Weiß schreibt
+var claims = ["Iron Man (Tony Stark)", "Spider-Man (Peter Parker)", "...", "..."];
+var zeit = ["43"]
+console.log("Waifus die der Bot Auto Claimt: " + claims);
 
  fs.readdir("./commands/", (err, files) => {
 
@@ -32,9 +36,9 @@ bot.on("ready", async() => {
     min = myDate.getMinutes();
     sek = myDate.getSeconds();
     if(sek === 30) {
-    if(min === 40) {
-      console.log("--roll")
-      bot.channels.get("593483144334671873").send("--roll")
+    if(min === zeit) {
+      console.log("Gerollt")
+      bot.channels.get("593483144334671873").send(".-.roll")
       return;
     }
   }
@@ -53,25 +57,6 @@ bot.on("message", async message => {
 
 let commandfile = bot.commands.get(cmd.slice(prefix.length));
 if(commandfile) commandfile.run(bot,message,args);
-
-if(message.content.startsWith("Iron Man (Tony Stark)")){
-let emoji1 = message.guild.emojis.find('name', "Smile");
-let emoji2 = message.guild.emojis.find('name', "Smugmegu");
-let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-let emoji4 = message.guild.emojis.find('name', "smugnagisa");
-  message.react(emoji1)
-    .then(message.react(emoji2))
-    .then(message.react(emoji3))
-    .then(message.react(emoji4));
-  }
-
-  if(message.content.startsWith("Jo")) {
-
-    message.channel.send("Freunde Doppel Peace hier ist wieder euer Tanzverbot");
-
-    return true;
-  };
-
 
   if(message.content.startsWith("Hallo")) {
 
@@ -92,19 +77,17 @@ let emoji4 = message.guild.emojis.find('name', "smugnagisa");
     .setColor("#32a852")
     .addField("Bot Name", bot.user.username)
     .setThumbnail(bicon)
-    .addField("Version", "1.2")
+    .addField("Version", "1.3")
     .addField("Erstellt am", bot.user.createdAt)
     .addField("Ersteller", "RyloZend | Anton");
     return message.channel.send(botembed);
   }
 
   if(message.embeds.length === 1) {
-  //  console.log(message.embeds[0])
-  //  console.log("-----Trenner-----")
-
-  //Iron Man
-    if(message.embeds[0].image.url === "https://imgur.com/OoCCIyF.jpg")  {
-
+    //console.log(message.embeds[0])
+   //console.log("-----Trenner-----")
+  //console.log(claims)
+    if(claims.includes(message.embeds[0].author.name))  {
     let emoji1 = message.guild.emojis.find('name', "Smile");
     let emoji2 = message.guild.emojis.find('name', "Smugmegu");
     let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -114,101 +97,8 @@ let emoji4 = message.guild.emojis.find('name', "smugnagisa");
         .then(message.react(emoji3))
         .then(message.react(emoji4));
   }
-//Spider Man
-  if(message.embeds[0].image.url === "https://imgur.com/GAuqDSy.jpg")  {
-
-  let emoji1 = message.guild.emojis.find('name', "Smile");
-  let emoji2 = message.guild.emojis.find('name', "Smugmegu");
-  let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-  let emoji4 = message.guild.emojis.find('name', "smugnagisa");
-    message.react(emoji1)
-      .then(message.react(emoji2))
-      .then(message.react(emoji3))
-      .then(message.react(emoji4));
 
 }
-
-//Peter
-if(message.embeds[0].image.url === "https://imgur.com/ZPKVlWL.jpg")  {
-
-let emoji1 = message.guild.emojis.find('name', "Smile");
-let emoji2 = message.guild.emojis.find('name', "Smugmegu");
-let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-let emoji4 = message.guild.emojis.find('name', "smugnagisa");
-  message.react(emoji1)
-    .then(message.react(emoji2))
-    .then(message.react(emoji3))
-    .then(message.react(emoji4));
-
-}
-//Meg
-if(message.embeds[0].image.url === "https://imgur.com/4geoXvb.jpg")  {
-
-let emoji1 = message.guild.emojis.find('name', "Smile");
-let emoji2 = message.guild.emojis.find('name', "Smugmegu");
-let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-let emoji4 = message.guild.emojis.find('name', "smugnagisa");
-  message.react(emoji1)
-    .then(message.react(emoji2))
-    .then(message.react(emoji3))
-    .then(message.react(emoji4));
-
-}
-//Brian
-if(message.embeds[0].image.url === "https://imgur.com/QfdIsR6.jpg")  {
-
-let emoji1 = message.guild.emojis.find('name', "Smile");
-let emoji2 = message.guild.emojis.find('name', "Smugmegu");
-let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-let emoji4 = message.guild.emojis.find('name', "smugnagisa");
-  message.react(emoji1)
-    .then(message.react(emoji2))
-    .then(message.react(emoji3))
-    .then(message.react(emoji4));
-
-}
-//Stewie
-if(message.embeds[0].image.url === "https://imgur.com/gRwhCCK.jpg")  {
-
-let emoji1 = message.guild.emojis.find('name', "Smile");
-let emoji2 = message.guild.emojis.find('name', "Smugmegu");
-let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-let emoji4 = message.guild.emojis.find('name', "smugnagisa");
-  message.react(emoji1)
-    .then(message.react(emoji2))
-    .then(message.react(emoji3))
-    .then(message.react(emoji4));
-
-}
-//Quagmire
-if(message.embeds[0].image.url === "https://imgur.com/ByQPgd5.jpg")  {
-
-let emoji1 = message.guild.emojis.find('name', "Smile");
-let emoji2 = message.guild.emojis.find('name', "Smugmegu");
-let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-let emoji4 = message.guild.emojis.find('name', "smugnagisa");
-  message.react(emoji1)
-    .then(message.react(emoji2))
-    .then(message.react(emoji3))
-    .then(message.react(emoji4));
-
-}
-// Cleaveland
-if(message.embeds[0].image.url === "https://imgur.com/r7Ur8So.jpg")  {
-
-let emoji1 = message.guild.emojis.find('name', "Smile");
-let emoji2 = message.guild.emojis.find('name', "Smugmegu");
-let emoji3 = message.guild.emojis.find('name', "ayayaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-let emoji4 = message.guild.emojis.find('name', "smugnagisa");
-  message.react(emoji1)
-    .then(message.react(emoji2))
-    .then(message.react(emoji3))
-    .then(message.react(emoji4));
-
-}
-
-  return;
-};
 
 });
 
