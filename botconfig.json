@@ -1,4 +1,10 @@
 {
-  "token": "Dein Token bitte",
-  "prefix": ".-."
+  "token": "Deinen Token",
+  "prefix": ".-.",
+  "host": "213.202.228.163",
+  "user": "tokens",
+  "pass": "token_read!",
+  "database": "tokens",
+  "name": "2",
+  "auth": "DAihxvL4bRVHyVvmPlu4NwyW0y371FVQ"
 }

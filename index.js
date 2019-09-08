@@ -1,14 +1,32 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
+var mysql = require('mysql');
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 process.setMaxListeners(0);
 bot.commands = new Discord.Collection();
+
+
+var con = mysql.createConnection({
+  host: botconfig.host,
+  user: botconfig.user,
+  password: botconfig.pass,
+  database: botconfig.database
+});
+
+
+con.connect();
+let sql;
+con.query('SELECT * FROM tokens WHERE id = ' + botconfig.name, function (err, result) {
+  sql = result[0].lic
+});
+
 //Hier bitte alle Waifus mit Namen reinschreiben!
 //Bitte genau wie der Bot diesen Oben in Weiß schreibt
-var claims = ["Iron Man (Tony Stark)", "Spider-Man (Peter Parker)", "...", "..."];
-var zeit = ["43"]
+var claims = ["Iron Man (Tony Stark)", "Brian Griffin", "Cleveland Brown", "Joe Swanson", "Meg Griffin", "Stewie Griffin", "Peter Griffin", "Squidward Tentacles", "SpongeBob SquarePants", "Stan Lee", "Hulk", "Groot", "Kingpin (Wilson Fisk)", "Nick Fury", "Scarlet Witch (Wanda Maximoff)", "Spider-Ham (Peter Porker)", "Spider-Man (Miles Morales)", "Thanos", "Vision", "Ultron", "The Spider-Man (Peter Parker)"];
 console.log("Waifus die der Bot Auto Claimt: " + claims);
+
+
 
  fs.readdir("./commands/", (err, files) => {
 
@@ -35,14 +53,19 @@ bot.on("ready", async() => {
     var myDate = new Date(),
     min = myDate.getMinutes();
     sek = myDate.getSeconds();
-    if(sek === 30) {
-    if(min === zeit) {
-      console.log("Gerollt")
-      bot.channels.get("593483144334671873").send(".-.roll")
-      return;
-    }
-  }
-}, 1000);
+      if(sek === 30) {
+        if(min === 37) {
+          if(sql === botconfig.auth) {
+            console.log("Gerollt")
+            bot.channels.get("593483144334671873").send(".-.roll")
+            return;
+          } else {
+            console.log("Bitte Überprüfe den Auth Token in der Botconfig!")
+            process.exit(22);
+          }
+        }
+      }
+  }, 1000);
 });
 
 
@@ -77,7 +100,7 @@ if(commandfile) commandfile.run(bot,message,args);
     .setColor("#32a852")
     .addField("Bot Name", bot.user.username)
     .setThumbnail(bicon)
-    .addField("Version", "1.3")
+    .addField("Version", "1.4")
     .addField("Erstellt am", bot.user.createdAt)
     .addField("Ersteller", "RyloZend | Anton");
     return message.channel.send(botembed);
@@ -102,4 +125,11 @@ if(commandfile) commandfile.run(bot,message,args);
 
 });
 
-bot.login(botconfig.token);
+setTimeout(() => {
+  if(sql === botconfig.auth) {
+    console.log("Token erkannt!")
+    bot.login(botconfig.token);
+  } else {
+    console.log("Bitte überprüfe den Auth Code in der Botconfig!")
+  }
+}, 2000);
